@@ -47,9 +47,9 @@ def getListofDictionary(List, EventName):
       # the dates strings are different. That is if the event is planned as an
       # extra event
       if Entry == 'DTSTART;TZID=Asia/Calcutta':
-        Dict['Start Date'] = List[KeyIndex]
+        Dict['Start Date'] = List[KeyIndex][0:4]+'-'+List[KeyIndex][4:6]+'-'+List[KeyIndex][6:8]+' at '+List[KeyIndex][9:11]+':'+List[KeyIndex][11:13]
       if Entry == 'DTEND;TZID=Asia/Calcutta':
-        Dict['End Date'] = List[KeyIndex]
+        Dict['End Date'] = List[KeyIndex][0:4]+'-'+List[KeyIndex][4:6]+'-'+List[KeyIndex][6:8]+' at '+List[KeyIndex][9:11]+':'+List[KeyIndex][11:13]
       if Entry == 'DESCRIPTION':
         Dict['Topic'] = List[KeyIndex]
       KeyIndex += 2
