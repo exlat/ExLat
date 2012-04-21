@@ -1,0 +1,39 @@
+From e29f34c0b7c14901cc38efef857d2698bcea4ae6 Mon Sep 17 00:00:00 2001
+From: swathy <swathysukumaran@gmail.com>
+Date: Sat, 21 Apr 2012 23:41:46 +0530
+Subject: [PATCH] repeating yearly
+
+---
+ gcalread.py |   16 ++++++++++------
+ 1 files changed, 10 insertions(+), 6 deletions(-)
+
+diff --git a/gcalread.py b/gcalread.py
+index 570f7ce..a1fd339 100755
+--- a/gcalread.py
++++ b/gcalread.py
+@@ -239,12 +239,16 @@ def repeat(newlist,index):
+             finyear += 1 
+ 
+ 
+-
+-
+-
+-
+-
+-
++   if freq[1] == 'YEARLY':
++       while i<cnt:
++         Dict={}
++         Dict['StartDate'] = '%i' %inityear+'-'+'%i' %initmonth+'-'+'%i' %initday+' at '+'%i' %inithour+':'+'%i' %initminut
++         Dict['End Date'] = '%i' %finyear+'-'+'%i' %finmonth+'-'+'%i' %finday+' at '+'%i' %finhour+':'+'%i' %finminut
++         Dict['Topic'] =  topic
++         EventsList.append(Dict)  
++         inityear += 1
++         finyear += 1
++         i += 1
+ 
+    return EventsList
+ def dictionary(List,Start,End,KeyIndex):
+-- 
+1.7.5.4
+
