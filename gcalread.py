@@ -43,9 +43,6 @@ def getListofDictionary(List, EventName):
     KeyIndex = Start + 1
     newlist=List[Start:End]
     for Entry in List[Start:End:2]:
-      # FIXIT: If the event in the calender is not part of a series of events
-      # the dates strings are different. That is if the event is planned as an
-      # extra event
       flag=0
       if Entry == 'RRULE':
          index=newlist.index('RRULE')
