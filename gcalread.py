@@ -239,12 +239,16 @@ def repeat(newlist,index):
             finyear += 1 
 
 
-
-
-
-
-
-
+   if freq[1] == 'YEARLY':
+       while i<cnt:
+         Dict={}
+         Dict['StartDate'] = '%i' %inityear+'-'+'%i' %initmonth+'-'+'%i' %initday+' at '+'%i' %inithour+':'+'%i' %initminut
+         Dict['End Date'] = '%i' %finyear+'-'+'%i' %finmonth+'-'+'%i' %finday+' at '+'%i' %finhour+':'+'%i' %finminut
+         Dict['Topic'] =  topic
+         EventsList.append(Dict)  
+         inityear += 1
+         finyear += 1
+         i += 1
 
    return EventsList
 def dictionary(List,Start,End,KeyIndex):
