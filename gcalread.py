@@ -187,6 +187,57 @@ def repeat(newlist,index):
             finyear += 1
 
    
+   if freq[1] == 'WEEKLY':
+       while i<cnt:
+         Dict={}
+         Dict['StartDate'] = '%i' %inityear+'-'+'%i' %initmonth+'-'+'%i' %initday+' at '+'%i' %inithour+':'+'%i' %initminut
+         Dict['End Date'] = '%i' %finyear+'-'+'%i' %finmonth+'-'+'%i' %finday+' at '+'%i' %finhour+':'+'%i' %finminut
+         Dict['Topic'] =  topic
+         EventsList.append(Dict)
+         initday += 7
+         finday += 7
+         i += 1
+         if initmonth == 1 or initmonth == 3 or initmonth == 5 or initmonth == 7 or initmonth == 8 or initmonth == 10 or initmonth == 12:
+            if initday > 31:
+               initday=initday-31
+               initmonth += 1
+         if finmonth == 1 or finmonth == 3 or finmonth == 5 or finmonth == 7 or finmonth == 8 or finmonth == 10 or finmonth == 12:
+            if finday > 31:
+               finday=finday-31
+               finmonth += 1
+         if initmonth == 4 or initmonth == 6 or initmonth == 9 or initmonth == 11:
+            if initday > 30:
+               initday=initday-30 
+               initmonth += 1
+              
+         if finmonth == 4 or finmonth == 6 or finmonth == 9 or finmonth == 11:
+            if finday > 30:
+               finday=finday-30
+               finmonth += 1
+         if initmonth == 2:
+            if inityear % 4 == 0:
+               if initday > 29:
+                  initday=initday-29
+                  initmonth += 1
+
+               if finday > 29:
+                  finday=finday-29
+                  finmonth += 1
+            else:
+                  if initday > 28:
+                     initday=initday -28
+                     initmonth += 1
+                  if finday > 28:
+                     finday=finday -28
+                     finmonth += 1
+
+         if initmonth > 12:
+            initmonth = 1
+            inityear += 1
+         if finmonth > 12:
+            finmonth = 1
+            finyear += 1 
+
 
 
 
