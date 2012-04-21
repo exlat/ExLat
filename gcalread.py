@@ -20,7 +20,7 @@
 #!/usr/bin/env python
 import sys
 import exchange as E
-
+import datetime
 def getListofDictionary(List, EventName):
   """Get a list of dictionaries. Each dictionary
      corresponds to a record of a single event
@@ -46,10 +46,11 @@ def getListofDictionary(List, EventName):
       # FIXIT: If the event in the calender is not part of a series of events
       # the dates strings are different. That is if the event is planned as an
       # extra event
-      if Entry == 'DTSTART;TZID=Asia/Calcutta':
-        Dict['Start Date'] = List[KeyIndex][0:4]+'-'+List[KeyIndex][4:6]+'-'+List[KeyIndex][6:8]+' at '+List[KeyIndex][9:11]+':'+List[KeyIndex][11:13]
-      if Entry == 'DTEND;TZID=Asia/Calcutta':
-        Dict['End Date'] = List[KeyIndex][0:4]+'-'+List[KeyIndex][4:6]+'-'+List[KeyIndex][6:8]+' at '+List[KeyIndex][9:11]+':'+List[KeyIndex][11:13]
+      if Entry == 'DTSTART':
+        s=datetime.datetime.strptime(List[KeyIndex],"%Y%m%dT%H%M%SZ")
+        Dict['Start Date'] = s.strftime('%H:%M %d %B %Y (UTC)')
+      if Entry == 'DTEND':
+        Dict['End Date'] =s.strftime('%H:%M %d %B %Y (UTC)')
       if Entry == 'DESCRIPTION':
         Dict['Topic'] = List[KeyIndex]
       KeyIndex += 2
