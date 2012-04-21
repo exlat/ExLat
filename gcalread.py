@@ -133,6 +133,68 @@ def repeat(newlist,index):
             if finmonth > 12:
                finmonth=1
                finyear += 1
+   if freq[1] == 'DAILY':
+
+      while i<cnt:
+         Dict={}
+         Dict['StartDate'] = '%i' %inityear+'-'+'%i' %initmonth+'-'+'%i' %initday+' at '+'%i' %inithour+':'+'%i' %initminut
+         Dict['End Date'] = '%i' %finyear+'-'+'%i' %finmonth+'-'+'%i' %finday+' at '+'%i' %finhour+':'+'%i' %finminut
+         Dict['Topic'] =  topic
+         EventsList.append(Dict)
+         initday += 1
+         finday  += 1
+         i += 1
+         if initmonth == 1 or initmonth == 3 or initmonth == 5 or initmonth == 7 or initmonth == 8 or initmonth == 10 or initmonth == 12:
+            if initday > 31:
+               initday=1
+               initmonth += 1
+         if finmonth == 1 or finmonth == 3 or finmonth == 5 or finmonth == 7 or finmonth == 8 or finmonth == 10 or finmonth == 12:
+            if finday > 31:
+               finday=1
+               finmonth += 1
+         if initmonth == 4 or initmonth == 6 or initmonth == 9 or initmonth == 11:
+            if initday > 30:
+               initday=1 
+               initmonth += 1
+              
+         if finmonth == 4 or finmonth == 6 or finmonth == 9 or finmonth == 11:
+            if finday > 30:
+               finday=1
+               finmonth += 1
+         if initmonth == 2:
+            if inityear % 4 == 0:
+               if initday > 29:
+                  initday=1
+                  initmonth += 1
+
+               if finday > 29:
+                  finday=1
+                  finmonth += 1
+            else:
+                  if initday > 28:
+                     initday=1
+                     initmonth += 1
+                  if finday > 28:
+                     finday=1
+                     finmonth += 1
+
+
+         if initmonth > 12:
+            initmonth = 1
+            inityear += 1
+         if finmonth > 12:
+            finmonth = 1
+            finyear += 1
+
+   
+
+
+
+
+
+
+
+
    return EventsList
 def dictionary(List,Start,End,KeyIndex):
       """dictionary when event is not repeating"""
